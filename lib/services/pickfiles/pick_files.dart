@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,15 +25,14 @@ class PickFileService with ChangeNotifier {
     try {
       if (resultFromStorage != null) {
         final filebytes = resultFromStorage.files.first.bytes!;
-        file = resultFromStorage.files.first.name;
-        final fileName = file;
+        String fileName = resultFromStorage.files.first.name;
+
         destination = 'content/mod1/$fileName';
         await EasyLoading.show(status: 'loading...');
 
         await uploadToDb
             .uploadContentToDb(
           destination: destination,
-          file: file,
           fileBytes: filebytes,
         )
             .whenComplete(() async {

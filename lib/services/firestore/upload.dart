@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -12,8 +12,7 @@ class UploadToDb {
   late String downloadURL = 'U';
   Future<String?> uploadContentToDb({
     required String destination,
-    required String? file,
-    required var fileBytes,
+    required Uint8List fileBytes,
   }) async {
     try {
       final refDb = FirebaseStorage.instance.ref(destination);

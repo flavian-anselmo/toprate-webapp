@@ -21,6 +21,7 @@ Future<void> main() async {
       appId: "1:382323322502:web:5ac19525a65283f607eb07",
       messagingSenderId: "382323322502",
       projectId: "toprate-test-sprint-b6032",
+      storageBucket: "toprate-test-sprint-b6032.appspot.com",
     ),
   );
   runApp(const MyApp());
