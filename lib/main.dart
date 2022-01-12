@@ -22,6 +22,7 @@ Future<void> main() async {
       messagingSenderId: "382323322502",
       projectId: "toprate-test-sprint-b6032",
       storageBucket: "toprate-test-sprint-b6032.appspot.com",
+      authDomain: "toprate-test-sprint-b6032.firebaseapp.com",
     ),
   );
   runApp(const MyApp());

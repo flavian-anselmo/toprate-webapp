@@ -24,79 +24,100 @@ class _AddModuleOneState extends State<AddModuleOne> {
         appBar: AppBar(
           title: const Text("Add Content "),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Form(
-            key: _formkeyGlobal,
-            
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const AnimatedTxt(),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: ktextFieldDEcoratiion.copyWith(
-                    labelText: 'title',
-                    prefixIcon: const Icon(Icons.title),
-                    hintText: "Material title ",
+        body: Container(
+           decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage('https://chiefexecutive.net/wp-content/uploads/2020/11/AdobeStock_246230613.jpg'),
+              fit: BoxFit.cover,    // -> 02
+            ),
+          ),
+          child: Center(
+            child: SizedBox(
+              width: 500,
+              child: Card(
+                child: Form(
+                  key: _formkeyGlobal,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const AnimatedTxt(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          decoration: ktextFieldDEcoratiion.copyWith(
+                            labelText: 'title',
+                            prefixIcon: const Icon(Icons.title),
+                            hintText: "Material title ",
+                          ),
+                          onChanged: (value) {
+                            //set the content title
+                            title = value;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "*required field ";
+                            } else if (value.length >= 30) {
+                              return "less than 30 characters ";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: ktextFieldDEcoratiion.copyWith(
+                            labelText: 'description',
+                            prefixIcon: const Icon(Icons.description),
+                            hintText: "Material description ",
+                          ),
+                          onChanged: (value) {
+                            //setthe content description
+                            description = value;
+                          },
+                          validator: (value) {
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          style: kelevatedbutton,
+                          onPressed: () {
+                            if (_formkeyGlobal.currentState!.validate()) {
+                              //validate the form before submssion
+                              //pick files from local storage
+                              Provider.of<PickFileService>(
+                                context,
+                                listen: false,
+                              ).pickFileLocally(
+                                  description: description, title: title);
+                            }
+                          },
+                          child: const Text(
+                            "Upload content ",
+                            style: kloginbutton,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  onChanged: (value) {
-                    //set the content title
-                    title = value;
-                  },
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "*required field ";
-                    } else if (value.length >= 30) {
-                      return "less than 30 characters ";
-                    }
-                    return null;
-                  },
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration: ktextFieldDEcoratiion.copyWith(
-                    labelText: 'description',
-                    prefixIcon: const Icon(Icons.description),
-                    hintText: "Material description ",
-                  ),
-                  onChanged: (value) {
-                    //setthe content description
-                    description = value;
-                  },
-                  validator: (value) {
-                    return null;
-                  },
-                ),
-                 const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  style: kelevatedbutton,
-                  onPressed: () {
-                    if (_formkeyGlobal.currentState!.validate()) {
-                      //validate the form before submssion
-                      //pick files from local storage
-                      Provider.of<PickFileService>(
-                        context,
-                        listen: false,
-                      ).pickFileLocally(description: description, title: title);
-                    }
-                  },
-                  child: const Text(
-                    "Upload content ",
-                    style: kloginbutton,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

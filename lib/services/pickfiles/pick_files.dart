@@ -54,7 +54,6 @@ class PickFileService with ChangeNotifier {
         EasyLoading.showInfo("no item was selected");
       }
     } catch (e) {
-      print(e);
       EasyLoading.showError("Something went wrong!");
     }
   }
@@ -79,7 +78,6 @@ class PickFileService with ChangeNotifier {
         );
       });
     } catch (e) {
-      print(e);
       EasyLoading.showError(e.toString());
     }
   }
@@ -92,7 +90,6 @@ class PickFileService with ChangeNotifier {
         loggedInUser = user;
       }
     } catch (e) {
-      print(e);
       EasyLoading.showError(e.toString());
     }
   }

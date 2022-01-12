@@ -25,129 +25,156 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Form(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const AnimatedTxt(),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.name,
-                decoration: ktextFieldDEcoratiion.copyWith(
-                  labelText: 'User Name',
-                  prefixIcon: const Icon(Icons.person),
-                  hintText: "John Doe",
-                ),
-                onChanged: (value) {
-                  //set the name
-                  name = value;
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "*required field";
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 10),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: ktextFieldDEcoratiion.copyWith(
-                  labelText: 'email',
-                  prefixIcon: const Icon(Icons.email),
-                  hintText: "steph@gmail.com",
-                ),
-                onChanged: (value) {
-                  //set the email
-                  setState(() {
-                    email = value;
-                  });
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "*required field";
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 10),
-              const SizedBox(height: 10),
-              TextFormField(
-                obscureText: true,
-                keyboardType: TextInputType.visiblePassword,
-                decoration: ktextFieldDEcoratiion.copyWith(
-                  labelText: 'Password',
-                  prefixIcon: const Icon(Icons.password),
-                  hintText: "must have 8 characters",
-                ),
-                onChanged: (value) {
-                  //set the password
-                  setState(() {
-                    password = email;
-                  });
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "*required field";
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 5),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginPage.id);
-                },
-                child: const Text(
-                  'Already have an account? Sign in',
-                  style: kauthtxtbuttondecoration,
-                ),
-              ),
-              ElevatedButton(
-                style: kelevatedbutton,
-                onPressed: () async {
-                  if (_formkeyGlobal.currentState!.validate()) {
-                    Provider.of<SignUpAuth>(
-                      context,
-                      listen: false,
-                    ).signUpToIgas(email, password).whenComplete(() {
-                      if (Provider.of<SignUpAuth>(
-                            context,
-                            listen: false,
-                          ).isReg ==
-                          true) {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                const LoginPage(),
-                          ),
-                          (route) => false,
-                        );
-                        //only move to the next screen if  valid
-                        EasyLoading.showSuccess("Registered successfully");
-                      } else {
-                        //return nothing due to errors
-                        return;
-                      }
-                    });
-                  }
-                },
-                child: const Text(
-                  '    Sign up    ',
-                  style: kloginbutton,
-                ),
-              ),
-            ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+              'https://chiefexecutive.net/wp-content/uploads/2020/11/AdobeStock_246230613.jpg',
+            ),
+            fit: BoxFit.cover, // -> 02
           ),
         ),
-        key: _formkeyGlobal,
+        child: Center(
+          child: SizedBox(
+            width: 500,
+            child: Card(
+              child: Form(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const AnimatedTxt(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.name,
+                        decoration: ktextFieldDEcoratiion.copyWith(
+                          labelText: 'User Name',
+                          prefixIcon: const Icon(Icons.person),
+                          hintText: "John Doe",
+                        ),
+                        onChanged: (value) {
+                          //set the name
+                          name = value;
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "*required field";
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: ktextFieldDEcoratiion.copyWith(
+                          labelText: 'email',
+                          prefixIcon: const Icon(Icons.email),
+                          hintText: "steph@gmail.com",
+                        ),
+                        onChanged: (value) {
+                          //set the email
+                          setState(() {
+                            email = value;
+                          });
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "*required field";
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        obscureText: true,
+                        keyboardType: TextInputType.visiblePassword,
+                        decoration: ktextFieldDEcoratiion.copyWith(
+                          labelText: 'Password',
+                          prefixIcon: const Icon(Icons.password),
+                          hintText: "must have 8 characters",
+                        ),
+                        onChanged: (value) {
+                          //set the password
+                          setState(() {
+                            password = email;
+                          });
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "*required field";
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, LoginPage.id);
+                      },
+                      child: const Text(
+                        'Already have an account? Sign in',
+                        style: kauthtxtbuttondecoration,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        style: kelevatedbutton,
+                        onPressed: () async {
+                          if (_formkeyGlobal.currentState!.validate()) {
+                            Provider.of<SignUpAuth>(
+                              context,
+                              listen: false,
+                            ).signUpToIgas(email, password).whenComplete(() {
+                              if (Provider.of<SignUpAuth>(
+                                    context,
+                                    listen: false,
+                                  ).isReg ==
+                                  true) {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const LoginPage(),
+                                  ),
+                                  (route) => false,
+                                );
+                                //only move to the next screen if  valid
+                                EasyLoading.showSuccess(
+                                    "Registered successfully");
+                              } else {
+                                //return nothing due to errors
+                                return;
+                              }
+                            });
+                          }
+                        },
+                        child: const Text(
+                          '    Sign up    ',
+                          style: kloginbutton,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                key: _formkeyGlobal,
+              ),
+            ),
+          ),
+        ),
       ),
-    ));
+    );
   }
 }

@@ -13,34 +13,42 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(300.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.person,
-                size: 100,
-              ),
-              SizedBox(
-                height: 50.0,
-              ),
-              SizedBox(
-                child: Card(
-                  child: ListTile(
-                    leading: Icon(Icons.person),
-                    trailing: Text("username"),
+        body: Center(
+          child: SizedBox(
+            width: 500,
+            child: Card(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.person,
+                      size: 100,
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Card(
+                      child: ListTile(
+                        leading: Icon(Icons.person),
+                        trailing: Text("username"),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Card(
+                      child: ListTile(
+                        leading: Icon(Icons.email),
+                        trailing: Text("usermail@email.com"),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.email),
-                  trailing: Text("usermail@email.com"),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
