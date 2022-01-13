@@ -34,33 +34,55 @@ class _ModuleOneState extends State<ModuleOne> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(ModuleOne.id),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Discussions.id);
+                },
+                child: const Text('Discussion')),
+          ),
+        ],
       ),
-      body: FutureBuilder(
-        future: fetchFromDb(),
-        //initialData: InitialData,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return const ModuleWidget();
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            //EasyLoading.showError("status");
-            EasyLoading.show(status: "Loading...");
-            return const Center(
-              child: Text("Loading..."),
-            );
-          } else if (snapshot.hasError) {
-            EasyLoading.showError("Error occurred while fetching!");
-            return const Center(
-                child: Text(
-              "Took long to load, kindly check internet connection",
-            ));
-          }
-          EasyLoading.showInfo("No content found!");
-          return const Center(
-            child: Text("No content Found!"),
-          );
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Center(
+          child: SizedBox(
+            width: 600,
+            child: Card(
+              child: FutureBuilder(
+                future: fetchFromDb(),
+                //initialData: InitialData,
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: ModuleWidget(),
+                    );
+                  } else if (snapshot.connectionState == ConnectionState.waiting) {
+                    //EasyLoading.showError("status");
+                    EasyLoading.show(status: "Loading...");
+                    return const Center(
+                      child: Text("Loading..."),
+                    );
+                  } else if (snapshot.hasError) {
+                    EasyLoading.showError("Error occurred while fetching!");
+                    return const Center(
+                        child: Text(
+                      "Took long to load, kindly check internet connection",
+                    ));
+                  }
+                  EasyLoading.showInfo("No content found!");
+                  return const Center(
+                    child: Text("No content Found!"),
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
       ),
- 
     );
   }
 }
@@ -88,13 +110,7 @@ class ModuleWidget extends StatelessWidget {
                     context,
                   ).moduleContents[index]["title"],
                 ),
-                subtitle: TextButton(
-                  onPressed: () {
-                    //move to the discussiion window
-                    Navigator.pushNamed(context, Discussions.id);
-                  },
-                  child: const Text("Join Discussion"),
-                ),
+               
                 trailing: TextButton(
                   onPressed: () async {
                     Provider.of<DownloadContent>(
@@ -107,7 +123,7 @@ class ModuleWidget extends StatelessWidget {
                       ).moduleContents[index]["link"],
                     );
                   },
-                  child: const Text("View"),
+                  child: const Text("Download"),
                 ),
               ),
               children: [
