@@ -11,7 +11,7 @@ const ksearchFieldDecoration = InputDecoration(
 );
 
 //theme colors for the application
-const kapppthemecolor = Color(0xFF144E85);
+const kapppthemecolor = Color(0xFF14855F);
 const ksecondaryAPPthemecolor = Colors.blue;
 
 //side bar text
@@ -39,7 +39,7 @@ const kauthtxtbuttondecoration = TextStyle(
 const kloginbutton = TextStyle(fontSize: 15.0);
 
 var kelevatedbutton = ElevatedButton.styleFrom(
-  primary: ksecondaryAPPthemecolor,
+  primary: kapppthemecolor,
 );
 
 //constants for the inputs

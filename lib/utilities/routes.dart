@@ -6,6 +6,7 @@ import 'package:topratepppp/screens/authentication/reset.dart';
 import 'package:topratepppp/screens/dashboard.dart';
 import 'package:topratepppp/screens/dashboard/home.dart';
 import 'package:topratepppp/screens/discuss/module_one_chat.dart';
+import 'package:topratepppp/screens/modules/Assignments/one_assignment.dart';
 import 'package:topratepppp/screens/modules/module_five.dart';
 import 'package:topratepppp/screens/modules/module_four.dart';
 import 'package:topratepppp/screens/modules/module_one.dart';
@@ -34,6 +35,9 @@ Map<String, WidgetBuilder> getRoutes(RouteSettings settings) {
 
     //adding content to the platform 
     AddModuleOne.id:(context)=>const AddModuleOne(),
+
+    //assignment upload
+    AssignmentUpload.id:(context)=>const AssignmentUpload(),
 
     //spalsh screen for the app
     SplashScreen.id: (context) => const SplashScreen(),

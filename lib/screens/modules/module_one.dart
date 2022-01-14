@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/screens/discuss/module_one_chat.dart';
+import 'package:topratepppp/screens/modules/Assignments/one_assignment.dart';
 import 'package:topratepppp/services/firestore/download.dart';
 import 'package:topratepppp/services/firestore/firestore.dart';
 
@@ -43,6 +45,15 @@ class _ModuleOneState extends State<ModuleOne> {
                 },
                 child: const Text('Discussion')),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                style: kelevatedbutton,
+                onPressed: () {
+                  Navigator.pushNamed(context, AssignmentUpload.id);
+                },
+                child: const Text('Assignments')),
+          ),
         ],
       ),
       body: Padding(
@@ -60,7 +71,8 @@ class _ModuleOneState extends State<ModuleOne> {
                       padding: EdgeInsets.all(8.0),
                       child: ModuleWidget(),
                     );
-                  } else if (snapshot.connectionState == ConnectionState.waiting) {
+                  } else if (snapshot.connectionState ==
+                      ConnectionState.waiting) {
                     //EasyLoading.showError("status");
                     EasyLoading.show(status: "Loading...");
                     return const Center(
@@ -69,9 +81,10 @@ class _ModuleOneState extends State<ModuleOne> {
                   } else if (snapshot.hasError) {
                     EasyLoading.showError("Error occurred while fetching!");
                     return const Center(
-                        child: Text(
-                      "Took long to load, kindly check internet connection",
-                    ));
+                      child: Text(
+                        "Took long to load, kindly check internet connection",
+                      ),
+                    );
                   }
                   EasyLoading.showInfo("No content found!");
                   return const Center(
@@ -110,7 +123,6 @@ class ModuleWidget extends StatelessWidget {
                     context,
                   ).moduleContents[index]["title"],
                 ),
-               
                 trailing: TextButton(
                   onPressed: () async {
                     Provider.of<DownloadContent>(
