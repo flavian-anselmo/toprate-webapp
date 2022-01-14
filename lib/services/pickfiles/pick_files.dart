@@ -168,6 +168,71 @@ class PickFileService with ChangeNotifier {
       EasyLoading.showError(e.toString());
     }
   }
+
+  Future<void> pickSubmitAsignmentLocally({
+    required String moduleType,
+  }) async {
+    FilePickerResult? resultFromStorage = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      type: FileType.custom,
+      allowedExtensions: ["pdf"],
+    );
+    try {
+      if (resultFromStorage != null) {
+        final filebytes = resultFromStorage.files.first.bytes!;
+        String fileName = resultFromStorage.files.first.name;
+
+        destination = 'submits/$fileName';
+        await EasyLoading.show(status: 'loading...');
+
+        await uploadToDb
+            .uploadContentToDb(
+          destination: destination,
+          fileBytes: filebytes,
+        )
+            .whenComplete(() async {
+          try {
+            if (destination.length > 1) {
+              await uploadToSubmitAssignment(
+                moduleType: moduleType,
+                downloadLink: uploadToDb.downloadURL,
+              );
+              await EasyLoading.showSuccess("uploaded");
+            }
+          } catch (e) {
+            await EasyLoading.showError(e.toString());
+          }
+        });
+        notifyListeners();
+      } else {
+        EasyLoading.showInfo("no item was selected");
+      }
+    } catch (e) {
+      EasyLoading.showError("Something went wrong!");
+    }
+  }
+
+  Future<void> uploadToSubmitAssignment({
+    required String moduleType,
+    required String downloadLink,
+  }) async {
+    try {
+      await fetchCurrentUser().whenComplete(() {
+        firestoreModStore
+            .collection('submitAssign')
+            .doc('hRB88ndcMjvYTmqw9bu1')
+            .collection('submitassignment')
+            .add(
+          {
+            "module": moduleType,
+            "link": downloadLink,
+          },
+        );
+      });
+    } catch (e) {
+      EasyLoading.showError(e.toString());
+    }
+  }
 }
 /**
  * ----[file_picker]---[plugin] 

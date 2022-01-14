@@ -4,19 +4,18 @@ import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/services/pickfiles/pick_files.dart';
 import 'package:topratepppp/widgets/animated.dart';
 
-class AssignmentUpload extends StatefulWidget {
-  const AssignmentUpload({Key? key}) : super(key: key);
-  static const String id = "assignment_one";
+class SubmitAssignment extends StatefulWidget {
+  const SubmitAssignment({Key? key}) : super(key: key);
+  static const id = "submit_assignment";
 
   @override
-  _AssignmentUploadState createState() => _AssignmentUploadState();
+  _SubmitAssignmentState createState() => _SubmitAssignmentState();
 }
 
-class _AssignmentUploadState extends State<AssignmentUpload> {
+class _SubmitAssignmentState extends State<SubmitAssignment> {
   final _formkeyGlobal = GlobalKey<FormState>();
 
-  late String description;
-  late String title;
+
   // Initial Selected Value
   String dropdownvalue = 'Module 1';
 
@@ -32,9 +31,7 @@ class _AssignmentUploadState extends State<AssignmentUpload> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("upload Assignment "),
-        ),
+        
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -75,51 +72,6 @@ class _AssignmentUploadState extends State<AssignmentUpload> {
                           },
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          keyboardType: TextInputType.text,
-                          decoration: ktextFieldDEcoratiion.copyWith(
-                            labelText: 'title',
-                            prefixIcon: const Icon(Icons.title),
-                            hintText: "Assignment title ",
-                          ),
-                          onChanged: (value) {
-                            //set the content title
-                            title = value;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "*required field ";
-                            } else if (value.length >= 30) {
-                              return "less than 30 characters ";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          decoration: ktextFieldDEcoratiion.copyWith(
-                            labelText: 'description',
-                            prefixIcon: const Icon(Icons.description),
-                            hintText: "Assignment description ",
-                          ),
-                          onChanged: (value) {
-                            //setthe content description
-                            description = value;
-                          },
-                          validator: (value) {
-                            return null;
-                          },
-                        ),
-                      ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -134,14 +86,13 @@ class _AssignmentUploadState extends State<AssignmentUpload> {
                               Provider.of<PickFileService>(
                                 context,
                                 listen: false,
-                              ).pickAssignmentLocally(
-                                  title: title,
-                                  description: description,
-                                  moduleType: dropdownvalue);
+                              ).pickSubmitAsignmentLocally(
+                                moduleType: dropdownvalue,
+                              );
                             }
                           },
                           child: const Text(
-                            "Upload Assignment ",
+                            "Submit Assignment ",
                             style: kloginbutton,
                           ),
                         ),

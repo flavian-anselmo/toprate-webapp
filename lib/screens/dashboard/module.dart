@@ -22,6 +22,7 @@ class _ModulesState extends State<Modules> {
             fit: BoxFit.cover, // -> 02
           ),
         ),
+        
         child: Center(
           child: SizedBox(
             width: 500,

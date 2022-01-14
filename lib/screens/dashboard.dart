@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:topratepppp/screens/dashboard/home.dart';
 import 'package:topratepppp/screens/dashboard/module.dart';
-import 'package:topratepppp/screens/dashboard/profile.dart';
+import 'package:topratepppp/screens/modules/Assignments/submit.dart';
 import 'package:topratepppp/widgets/drawer.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -16,12 +16,13 @@ class DashboardScreen extends StatefulWidget {
 class DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    //screens to be viewed 
+    //screens to be viewed
     Home(),
     Modules(),
-    Profile(),
+    // Profile(),
+    SubmitAssignment(),
   ];
 
   void _onItemTapped(int index) {
@@ -51,9 +52,10 @@ class DashboardScreenState extends State<DashboardScreen> {
             icon: Icon(Icons.bookmark),
             label: 'Modules',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.contact_mail),
-            label: 'Profile',
+         
+         BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Submit Assignment',
           ),
         ],
         currentIndex: _selectedIndex,
