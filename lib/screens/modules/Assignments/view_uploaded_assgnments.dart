@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-import 'package:topratepppp/constant.dart';
-import 'package:topratepppp/screens/discuss/module_one_chat.dart';
-import 'package:topratepppp/screens/modules/Assignments/upload.dart';
 import 'package:topratepppp/services/firestore/download.dart';
 import 'package:topratepppp/services/firestore/firestore.dart';
 
-class ModuleOne extends StatefulWidget {
-  const ModuleOne({Key? key}) : super(key: key);
-  static const String id = "module one";
+class UploadedAssignments extends StatefulWidget {
+  const UploadedAssignments({Key? key}) : super(key: key);
+  static const id = "uploadAssignment";
 
   @override
-  _ModuleOneState createState() => _ModuleOneState();
+  _UploadedAssignmentsState createState() => _UploadedAssignmentsState();
 }
 
-class _ModuleOneState extends State<ModuleOne> {
-  List moduleContents = [];
+class _UploadedAssignmentsState extends State<UploadedAssignments> {
+  List assignments = [];
 
   Future<dynamic> fetchFromDb() async {
     // FirebaseFirestore fireStoreInstance = FirebaseFirestore.instance;
@@ -25,7 +22,7 @@ class _ModuleOneState extends State<ModuleOne> {
       Provider.of<FireStoreServices>(
         context,
         listen: false,
-      ).fetchModuleContentFromFirestore();
+      ).getAssignmnetsFromFirestore();
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -34,28 +31,7 @@ class _ModuleOneState extends State<ModuleOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(ModuleOne.id),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, Discussions.id);
-                },
-                child: const Text('Discussion')),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-                style: kelevatedbutton,
-                onPressed: () {
-                  Navigator.pushNamed(context, AssignmentUpload.id);
-                },
-                child: const Text('Assignments')),
-          ),
-        ],
-      ),
+    
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Center(
@@ -108,7 +84,7 @@ class ModuleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: Provider.of<FireStoreServices>(context).moduleContents.length,
+      itemCount: Provider.of<FireStoreServices>(context).assignmentsUploaded.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
           padding: const EdgeInsets.all(10.0),
@@ -121,7 +97,7 @@ class ModuleWidget extends StatelessWidget {
                 title: Text(
                   Provider.of<FireStoreServices>(
                     context,
-                  ).moduleContents[index]["title"],
+                  ).assignmentsUploaded[index]["title"],
                 ),
                 trailing: TextButton(
                   onPressed: () async {
@@ -132,7 +108,7 @@ class ModuleWidget extends StatelessWidget {
                       Provider.of<FireStoreServices>(
                         context,
                         listen: false,
-                      ).moduleContents[index]["link"],
+                      ).assignmentsUploaded[index]["link"],
                     );
                   },
                   child: const Text("Download"),
@@ -145,7 +121,7 @@ class ModuleWidget extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Text(Provider.of<FireStoreServices>(
                       context,
-                    ).moduleContents[index]["desc"]),
+                    ).assignmentsUploaded[index]["desc"]),
                   ),
                 ),
               ],

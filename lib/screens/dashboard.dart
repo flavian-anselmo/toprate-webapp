@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:topratepppp/screens/dashboard/home.dart';
 import 'package:topratepppp/screens/dashboard/module.dart';
 import 'package:topratepppp/screens/modules/Assignments/submit.dart';
+import 'package:topratepppp/screens/modules/Assignments/view_uploaded_assgnments.dart';
 import 'package:topratepppp/widgets/drawer.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -21,8 +22,8 @@ class DashboardScreenState extends State<DashboardScreen> {
     //screens to be viewed
     Home(),
     Modules(),
-    // Profile(),
     SubmitAssignment(),
+    UploadedAssignments(),
   ];
 
   void _onItemTapped(int index) {
@@ -43,6 +44,8 @@ class DashboardScreenState extends State<DashboardScreen> {
       ),
       drawer: const NavigationDrawer(),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // This is all you need!
+
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -52,10 +55,13 @@ class DashboardScreenState extends State<DashboardScreen> {
             icon: Icon(Icons.bookmark),
             label: 'Modules',
           ),
-         
-         BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.book),
             label: 'Submit Assignment',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book_online),
+            label: 'My Assignments',
           ),
         ],
         currentIndex: _selectedIndex,

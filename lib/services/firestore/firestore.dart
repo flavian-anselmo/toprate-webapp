@@ -12,7 +12,16 @@ class FireStoreServices with ChangeNotifier {
       "link": "link",
     }
   ];
+  List assignmentsUploaded = [
+    {
+      "desc": "no-descriptiion",
+      "link": "module",
+      "module": "mod[x]",
+      "title": "no-title",
+    }
+  ];
   bool? isModuleFetched;
+  bool? isAssignmentFtched;
   Future<dynamic> fetchModuleContentFromFirestore() async {
     try {
       final contents = await fireStoreInstance
@@ -33,6 +42,32 @@ class FireStoreServices with ChangeNotifier {
       return moduleContents;
     } catch (e) {
       isModuleFetched = false;
+      notifyListeners();
+      EasyLoading.showError(e.toString());
+    }
+  }
+
+  ///fetch assignments
+  Future<dynamic> getAssignmnetsFromFirestore() async {
+    try {
+      final contents = await fireStoreInstance
+          .collection("assignment")
+          .doc("hRB88ndcMjvYTmqw9bu1")
+          .collection("assignment")
+          .get();
+      assignmentsUploaded.clear(); //remove the initial data
+      for (var cont in contents.docs) {
+        //add the contents as per the doc access ID
+        assignmentsUploaded.add(cont.data());
+        // notifyListeners();
+      }
+      isAssignmentFtched = true;
+      notifyListeners();
+      EasyLoading.showSuccess("content fecthed Successfully");
+      //print(moduleContents);
+      return assignmentsUploaded;
+    } catch (e) {
+      isAssignmentFtched = false;
       notifyListeners();
       EasyLoading.showError(e.toString());
     }
