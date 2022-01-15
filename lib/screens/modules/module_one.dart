@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/screens/discuss/module_one_chat.dart';
-import 'package:topratepppp/services/firestore/download.dart';
 import 'package:topratepppp/services/firestore/firestore.dart';
+import 'package:topratepppp/widgets/module_returned.dart';
 
 class ModuleOne extends StatefulWidget {
   const ModuleOne({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _ModuleOneState extends State<ModuleOne> {
     try {
       Provider.of<FireStoreServices>(context,listen: false)
           .moduleContents
-          .removeWhere((element) => element["module"] == "Module 1");
+          .removeWhere((element) => element["module"] == kmodule1);
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -99,59 +100,3 @@ class _ModuleOneState extends State<ModuleOne> {
   }
 }
 
-class ModuleWidget extends StatelessWidget {
-  const ModuleWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Provider.of<FireStoreServices>(context).moduleContents.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: InkWell(
-            child: ExpansionTile(
-              title: ListTile(
-                leading: Image.network(
-                  "https://media.istockphoto.com/vectors/pdf-download-vector-icon-vector-id1263032734?k=20&m=1263032734&s=612x612&w=0&h=RNUAjin6RWIpjr-NgvnASdxAwUE6pyUafrk6LcoyRNo=",
-                ),
-                title: Text(
-                  Provider.of<FireStoreServices>(
-                    context,
-                  ).moduleContents[index]["title"],
-                ),
-                trailing: TextButton(
-                  onPressed: () async {
-                    Provider.of<DownloadContent>(
-                      context,
-                      listen: false,
-                    ).downLoadPdf(
-                      Provider.of<FireStoreServices>(
-                        context,
-                        listen: false,
-                      ).moduleContents[index]["link"],
-                    );
-                  },
-                  child: const Text("Download"),
-                ),
-              ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(Provider.of<FireStoreServices>(
-                      context,
-                    ).moduleContents[index]["desc"]),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-}

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-import 'package:topratepppp/services/firestore/download.dart';
 import 'package:topratepppp/services/firestore/firestore.dart';
+import 'package:topratepppp/widgets/assignment_returned.dart';
 
 class UploadedAssignments extends StatefulWidget {
   const UploadedAssignments({Key? key}) : super(key: key);
@@ -76,59 +76,4 @@ class _UploadedAssignmentsState extends State<UploadedAssignments> {
   }
 }
 
-class ModuleWidget extends StatelessWidget {
-  const ModuleWidget({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Provider.of<FireStoreServices>(context).assignmentsUploaded.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: InkWell(
-            child: ExpansionTile(
-              title: ListTile(
-                leading: Image.network(
-                  "https://media.istockphoto.com/vectors/pdf-download-vector-icon-vector-id1263032734?k=20&m=1263032734&s=612x612&w=0&h=RNUAjin6RWIpjr-NgvnASdxAwUE6pyUafrk6LcoyRNo=",
-                ),
-                title: Text(
-                  Provider.of<FireStoreServices>(
-                    context,
-                  ).assignmentsUploaded[index]["title"],
-                ),
-                trailing: TextButton(
-                  onPressed: () async {
-                    Provider.of<DownloadContent>(
-                      context,
-                      listen: false,
-                    ).downLoadPdf(
-                      Provider.of<FireStoreServices>(
-                        context,
-                        listen: false,
-                      ).assignmentsUploaded[index]["link"],
-                    );
-                  },
-                  child: const Text("Download"),
-                ),
-              ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(Provider.of<FireStoreServices>(
-                      context,
-                    ).assignmentsUploaded[index]["desc"]),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
