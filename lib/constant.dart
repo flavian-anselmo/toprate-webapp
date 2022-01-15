@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 const ksearchFieldDecoration = InputDecoration(
@@ -55,3 +54,9 @@ final ktextFieldDEcoratiion = InputDecoration(
     ),
   ),
 );
+const String kmodule1 = "Leadership and governance";
+const String kmodule2 = "Strategic human resource management";
+const String kmodule3 = "project management and strategic planning and management";
+const String kmodule4 = "Financial Management";
+const String kmodule5 = "Digital teaching and learning";
+

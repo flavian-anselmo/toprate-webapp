@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/screens/modules/module_one.dart';
 import 'package:topratepppp/screens/modules/module_two.dart';
 
@@ -22,7 +23,6 @@ class _ModulesState extends State<Modules> {
             fit: BoxFit.cover, // -> 02
           ),
         ),
-        
         child: Center(
           child: SizedBox(
             width: 500,
@@ -52,7 +52,7 @@ class _ModulesState extends State<Modules> {
                                 child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Leadership & Governance',
+                                kmodule1,
                                 style: TextStyle(fontSize: 15),
                               ),
                             )),
@@ -73,7 +73,7 @@ class _ModulesState extends State<Modules> {
                                 child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Strategic Human Resource Management',
+                                kmodule2,
                                 style: TextStyle(fontSize: 15),
                               ),
                             )),
@@ -92,7 +92,7 @@ class _ModulesState extends State<Modules> {
                                 child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Project management & Strategic Planning',
+                                kmodule3,
                                 style: TextStyle(fontSize: 15),
                               ),
                             )),
@@ -111,7 +111,7 @@ class _ModulesState extends State<Modules> {
                                 child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Financial Management',
+                                kmodule4,
                                 style: TextStyle(fontSize: 15),
                               ),
                             )),
@@ -130,7 +130,7 @@ class _ModulesState extends State<Modules> {
                                 child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Digital teaching and learning',
+                                kmodule5,
                                 style: TextStyle(fontSize: 15),
                               ),
                             )),
