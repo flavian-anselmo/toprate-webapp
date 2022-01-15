@@ -54,6 +54,8 @@ final ktextFieldDEcoratiion = InputDecoration(
     ),
   ),
 );
+
+//modules behind the application
 const String kmodule1 = "Leadership and governance";
 const String kmodule2 = "Strategic human resource management";
 const String kmodule3 = "project management and strategic planning and management";

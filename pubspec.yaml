@@ -44,7 +44,8 @@ dependencies:
   firebase_auth: ^3.3.3
   cloud_firestore: ^3.1.4
   firebase_storage: ^10.2.4
-  responsive_framework: ^0.1.5
+  simple_speed_dial: ^0.1.3
+
 
 
 
