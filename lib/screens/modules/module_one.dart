@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/screens/discuss/module_one_chat.dart';
-import 'package:topratepppp/screens/modules/Assignments/upload.dart';
 import 'package:topratepppp/services/firestore/download.dart';
 import 'package:topratepppp/services/firestore/firestore.dart';
 
@@ -16,7 +14,7 @@ class ModuleOne extends StatefulWidget {
 }
 
 class _ModuleOneState extends State<ModuleOne> {
-  List moduleContents = [];
+  //List moduleContents = [];
 
   Future<dynamic> fetchFromDb() async {
     // FirebaseFirestore fireStoreInstance = FirebaseFirestore.instance;
@@ -25,7 +23,17 @@ class _ModuleOneState extends State<ModuleOne> {
       Provider.of<FireStoreServices>(
         context,
         listen: false,
-      ).fetchModuleContentFromFirestore();
+      ).fetchModuleContentFromFirestore().whenComplete(() => filterList());
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<void> filterList() async {
+    try {
+      Provider.of<FireStoreServices>(context,listen: false)
+          .moduleContents
+          .removeWhere((element) => element["module"] == "Module 1");
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -44,15 +52,6 @@ class _ModuleOneState extends State<ModuleOne> {
                   Navigator.pushNamed(context, Discussions.id);
                 },
                 child: const Text('Discussion')),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-                style: kelevatedbutton,
-                onPressed: () {
-                  Navigator.pushNamed(context, AssignmentUpload.id);
-                },
-                child: const Text('Assignments')),
           ),
         ],
       ),

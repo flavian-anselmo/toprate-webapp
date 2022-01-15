@@ -16,6 +16,7 @@ class PickFileService with ChangeNotifier {
   Future<void> pickFileLocally({
     required String description,
     required String title,
+    required String moduleType,
   }) async {
     FilePickerResult? resultFromStorage = await FilePicker.platform.pickFiles(
       allowMultiple: true,
@@ -42,6 +43,7 @@ class PickFileService with ChangeNotifier {
                 decsription: description,
                 title: title,
                 downloadLink: uploadToDb.downloadURL,
+                moduleType: moduleType,
               );
               await EasyLoading.showSuccess("uploaded");
             }
@@ -61,6 +63,7 @@ class PickFileService with ChangeNotifier {
   Future<void> uploadToFirestore({
     required String decsription,
     required String title,
+    required String moduleType,
     required String downloadLink,
   }) async {
     try {
@@ -73,6 +76,7 @@ class PickFileService with ChangeNotifier {
           {
             "desc": decsription,
             "title": title,
+            "module": moduleType,
             "link": downloadLink,
           },
         );

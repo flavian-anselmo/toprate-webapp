@@ -17,6 +17,16 @@ class _AddModuleOneState extends State<AddModuleOne> {
 
   late String description;
   late String title;
+  String dropdownvalue = 'Module 1';
+
+  // List of items in our dropdown menu
+  var items = [
+    'Module 1',
+    'Module 2',
+    'Module 3',
+    'Module 4',
+    'Module 5',
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,10 +35,11 @@ class _AddModuleOneState extends State<AddModuleOne> {
           title: const Text("Add Content "),
         ),
         body: Container(
-           decoration: const BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage('https://chiefexecutive.net/wp-content/uploads/2020/11/AdobeStock_246230613.jpg'),
-              fit: BoxFit.cover,    // -> 02
+              image: NetworkImage(
+                  'https://chiefexecutive.net/wp-content/uploads/2020/11/AdobeStock_246230613.jpg'),
+              fit: BoxFit.cover, // -> 02
             ),
           ),
           child: Center(
@@ -44,6 +55,24 @@ class _AddModuleOneState extends State<AddModuleOne> {
                       const AnimatedTxt(),
                       const SizedBox(
                         height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownButton(
+                          value: dropdownvalue,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: items.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownvalue = newValue!;
+                            });
+                          },
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -105,7 +134,10 @@ class _AddModuleOneState extends State<AddModuleOne> {
                                 context,
                                 listen: false,
                               ).pickFileLocally(
-                                  description: description, title: title);
+                                description: description,
+                                title: title,
+                                moduleType: dropdownvalue,
+                              );
                             }
                           },
                           child: const Text(
