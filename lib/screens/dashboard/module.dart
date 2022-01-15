@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:topratepppp/constant.dart';
+import 'package:topratepppp/screens/modules/module_five.dart';
+import 'package:topratepppp/screens/modules/module_four.dart';
 import 'package:topratepppp/screens/modules/module_one.dart';
+import 'package:topratepppp/screens/modules/module_three.dart';
 import 'package:topratepppp/screens/modules/module_two.dart';
 
 class Modules extends StatefulWidget {
@@ -85,7 +88,9 @@ class _ModulesState extends State<Modules> {
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
                           hoverColor: Colors.cyan,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, ModuleThree.id);
+                          },
                           child: const Card(
                             //padding: const EdgeInsets.all(8),
                             child: Center(
@@ -104,7 +109,9 @@ class _ModulesState extends State<Modules> {
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
                           hoverColor: Colors.cyan,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, ModuleFour.id);
+                          },
                           child: const Card(
                             //padding: const EdgeInsets.all(8),
                             child: Center(
@@ -123,7 +130,9 @@ class _ModulesState extends State<Modules> {
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
                           hoverColor: Colors.cyan,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, ModuleFive.id);
+                          },
                           child: const Card(
                             //padding: const EdgeInsets.all(8),
                             child: Center(

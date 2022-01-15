@@ -32,9 +32,13 @@ class _ModuleOneState extends State<ModuleOne> {
 
   Future<void> filterList() async {
     try {
-      Provider.of<FireStoreServices>(context,listen: false)
+      Provider.of<FireStoreServices>(context, listen: false)
           .moduleContents
-          .removeWhere((element) => element["module"] == kmodule1);
+          .removeWhere((element) =>
+              element["module"] == kmodule2||
+              element["module"] == kmodule3 ||
+              element["module"] == kmodule4 ||
+              element["module"] == kmodule5);
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -99,4 +103,3 @@ class _ModuleOneState extends State<ModuleOne> {
     );
   }
 }
-

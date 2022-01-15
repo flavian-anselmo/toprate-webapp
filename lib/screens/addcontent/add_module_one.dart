@@ -17,15 +17,15 @@ class _AddModuleOneState extends State<AddModuleOne> {
 
   late String description;
   late String title;
-  String dropdownvalue = 'Module 1';
+  String dropdownvalue = kmodule1;
 
   // List of items in our dropdown menu
   var items = [
-    'Module 1',
-    'Module 2',
-    'Module 3',
-    'Module 4',
-    'Module 5',
+    kmodule1,
+    kmodule2,
+    kmodule3,
+    kmodule4,
+    kmodule5,
   ];
   @override
   Widget build(BuildContext context) {
