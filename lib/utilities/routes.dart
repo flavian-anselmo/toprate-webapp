@@ -6,6 +6,7 @@ import 'package:topratepppp/screens/authentication/reset.dart';
 import 'package:topratepppp/screens/dashboard.dart';
 import 'package:topratepppp/screens/dashboard/home.dart';
 import 'package:topratepppp/screens/discuss/module_one_chat.dart';
+import 'package:topratepppp/screens/modules/Assignments/admin_view_assignmnts.dart';
 import 'package:topratepppp/screens/modules/Assignments/upload.dart';
 import 'package:topratepppp/screens/modules/Assignments/submit.dart';
 import 'package:topratepppp/screens/modules/Assignments/view_uploaded_assgnments.dart';
@@ -42,18 +43,12 @@ Map<String, WidgetBuilder> getRoutes(RouteSettings settings) {
     AssignmentUpload.id:(context)=>const AssignmentUpload(),
     SubmitAssignment.id:(context)=>const SubmitAssignment(),
     UploadedAssignments.id:(context)=>const UploadedAssignments(),
+    AdminViewAssignments.id:(context)=>const AdminViewAssignments(),
 
     //spalsh screen for the app
     SplashScreen.id: (context) => const SplashScreen(),
   };
-  // if (settings.name == OrderPaymentScreen.route) {
-  //   final args = settings.arguments as OrderPaymentArguments;
 
-  //   routes.putIfAbsent(
-  //     OrderPaymentScreen.route,
-  //     () => (context) => OrderPaymentScreen(iPayUrl: args.iPayUrl),
-  //   );
-  // }
 
   return routes;
 }

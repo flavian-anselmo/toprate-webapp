@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:topratepppp/screens/addcontent/add_module_one.dart';
+import 'package:topratepppp/screens/modules/Assignments/admin_view_assignmnts.dart';
 import 'package:topratepppp/screens/modules/Assignments/upload.dart';
 
 class AdminButton extends StatelessWidget {
@@ -41,7 +43,16 @@ class AdminButton extends StatelessWidget {
               Navigator.pushNamed(context, AssignmentUpload.id);
             },
           ),
-          //  Your other SpeeDialChildren go here.
+          SpeedDialChild(
+            child: const Icon(Icons.book),
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.green,
+            label: 'View submitted assignments ',
+            onPressed: () {
+              //display the assignments to the instractor
+              Navigator.pushNamed(context, AdminViewAssignments.id);      
+            },
+          ),
         ],
       ),
     );

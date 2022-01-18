@@ -175,6 +175,7 @@ class PickFileService with ChangeNotifier {
 
   Future<void> pickSubmitAsignmentLocally({
     required String moduleType,
+    required String email,
   }) async {
     FilePickerResult? resultFromStorage = await FilePicker.platform.pickFiles(
       allowMultiple: true,
@@ -200,6 +201,7 @@ class PickFileService with ChangeNotifier {
               await uploadToSubmitAssignment(
                 moduleType: moduleType,
                 downloadLink: uploadToDb.downloadURL,
+                email: email,
               );
               await EasyLoading.showSuccess("uploaded");
             }
@@ -219,6 +221,7 @@ class PickFileService with ChangeNotifier {
   Future<void> uploadToSubmitAssignment({
     required String moduleType,
     required String downloadLink,
+    required String email,
   }) async {
     try {
       await fetchCurrentUser().whenComplete(() {
@@ -230,6 +233,7 @@ class PickFileService with ChangeNotifier {
           {
             "module": moduleType,
             "link": downloadLink,
+            "email":email,
           },
         );
       });
