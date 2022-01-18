@@ -13,7 +13,7 @@ class UploadedAssignments extends StatefulWidget {
 }
 
 class _UploadedAssignmentsState extends State<UploadedAssignments> {
-  List assignments = [];
+  //List assignments = [];
 
   Future<dynamic> fetchFromDb() async {
     // FirebaseFirestore fireStoreInstance = FirebaseFirestore.instance;

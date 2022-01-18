@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:topratepppp/constant.dart';
+import 'package:topratepppp/services/chat/one_chat.dart';
 import 'package:topratepppp/services/pickfiles/pick_files.dart';
 import 'package:topratepppp/widgets/animated.dart';
 
@@ -14,7 +15,7 @@ class SubmitAssignment extends StatefulWidget {
 
 class _SubmitAssignmentState extends State<SubmitAssignment> {
   final _formkeyGlobal = GlobalKey<FormState>();
-
+  String email = '';
 
   // Initial Selected Value
   String dropdownvalue = kmodule1;
@@ -28,10 +29,27 @@ class _SubmitAssignmentState extends State<SubmitAssignment> {
     kmodule5,
   ];
   @override
+  void initState() {
+    super.initState();
+    fetchUserMail();
+  }
+
+  Future<void> fetchUserMail() async {
+    //ge the email of the user
+    Provider.of<ModuleChat>(context, listen: false)
+        .fetchCurrentUser()
+        .whenComplete(() {
+      setState(() {
+        email =
+            Provider.of<ModuleChat>(context, listen: false).loggedInUser.email!;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -88,6 +106,7 @@ class _SubmitAssignmentState extends State<SubmitAssignment> {
                                 listen: false,
                               ).pickSubmitAsignmentLocally(
                                 moduleType: dropdownvalue,
+                                email: email,
                               );
                             }
                           },

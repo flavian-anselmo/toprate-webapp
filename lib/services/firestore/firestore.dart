@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class FireStoreServices with ChangeNotifier {
   FirebaseFirestore fireStoreInstance = FirebaseFirestore.instance;
+  //modules uploaded in the site
   List moduleContents = [
     //initial data to prevent errors
     {
@@ -12,6 +13,7 @@ class FireStoreServices with ChangeNotifier {
       "link": "link",
     }
   ];
+  //assignments uploaded for students
   List assignmentsUploaded = [
     {
       "desc": "no-descriptiion",
@@ -20,8 +22,16 @@ class FireStoreServices with ChangeNotifier {
       "title": "no-title",
     }
   ];
+  //assignmmnets to be marked by the instarctor
+  List submittedAssignments = [
+    {
+      "module": "module ",
+      "link": "download",
+    }
+  ];
   bool? isModuleFetched;
   bool? isAssignmentFtched;
+  bool? isSubmitFecthed;
   Future<dynamic> fetchModuleContentFromFirestore() async {
     try {
       final contents = await fireStoreInstance
@@ -68,6 +78,32 @@ class FireStoreServices with ChangeNotifier {
       return assignmentsUploaded;
     } catch (e) {
       isAssignmentFtched = false;
+      notifyListeners();
+      EasyLoading.showError(e.toString());
+    }
+  }
+
+  //get the assignments that were submitted by the students
+  Future<dynamic> getTheStudentSubmittedAssignments() async {
+    try {
+      final contents = await fireStoreInstance
+          .collection("submitAssign")
+          .doc("hRB88ndcMjvYTmqw9bu1")
+          .collection("submitassignment")
+          .get();
+      submittedAssignments.clear(); //remove the initial data
+      for (var cont in contents.docs) {
+        //add the contents as per the doc access ID
+        submittedAssignments.add(cont.data());
+        // notifyListeners();
+      }
+      isSubmitFecthed= true;
+      notifyListeners();
+      EasyLoading.showSuccess("content fecthed Successfully");
+      //print(moduleContents);
+      return submittedAssignments;
+    } catch (e) {
+      isSubmitFecthed = false;
       notifyListeners();
       EasyLoading.showError(e.toString());
     }
