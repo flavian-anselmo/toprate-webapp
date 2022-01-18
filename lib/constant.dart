@@ -58,7 +58,15 @@ final ktextFieldDEcoratiion = InputDecoration(
 //modules behind the application
 const String kmodule1 = "Leadership and governance";
 const String kmodule2 = "Strategic human resource management";
-const String kmodule3 = "project management and strategic planning and management";
+const String kmodule3 =
+    "project management and strategic planning and management";
 const String kmodule4 = "Financial Management";
 const String kmodule5 = "Digital teaching and learning";
 
+
+//admin emails that are fetched upon authentication 
+const String kadmin1 = "flaviananselmo6@gmail.com";
+const String kadmin2 = "anambiro@kibu.ac.ke";
+const String kadmin3 = "maiyojulius@kibu.ac.ke" ;
+const String kadmin4 = "jndiku@mmust.ac.ke";
+const String kadmin5 = "maryngare@yahoo.com";

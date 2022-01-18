@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/services/chat/one_chat.dart';
 import 'package:topratepppp/widgets/float_action_admin.dart';
 
@@ -29,12 +30,11 @@ class _HomeState extends State<Home> {
     ).fetchCurrentUser().whenComplete(() {
       String? email =
           Provider.of<ModuleChat>(context, listen: false).loggedInUser.email;
-      if (email == "flaviananselmo6@gmail.com" ||
-          email == "anambiro@kibu.ac.ke" ||
-          email =="maiyojulius@kibu.ac.ke" ||
-          email == "jndiku@mmust.ac.ke" ||
-          email == "maryngare@yahoo.com"
-          ) {
+      if (email == kadmin1 ||
+          email == kadmin2 ||
+          email == kadmin3 ||
+          email == kadmin4 ||
+          email == kadmin5) {
         setState(() {
           isVisible = true;
         });
@@ -54,4 +54,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
