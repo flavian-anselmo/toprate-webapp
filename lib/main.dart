@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Toprate',
         theme: ThemeData(
-          primarySwatch: Colors.cyan
+          primarySwatch: Colors.blue
         ),
         initialRoute: SplashScreen.id,
         onGenerateRoute: (settings) {
