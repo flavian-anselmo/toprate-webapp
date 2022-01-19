@@ -40,6 +40,9 @@ const kloginbutton = TextStyle(fontSize: 15.0);
 var kelevatedbutton = ElevatedButton.styleFrom(
   primary: kapppthemecolor,
 );
+const kmoduletxt= TextStyle(fontSize: 15.0,color: Colors.green);
+
+
 
 //constants for the inputs
 final ktextFieldDEcoratiion = InputDecoration(
@@ -63,10 +66,12 @@ const String kmodule3 =
 const String kmodule4 = "Financial Management";
 const String kmodule5 = "Digital teaching and learning";
 
-
-//admin emails that are fetched upon authentication 
+//admin emails that are fetched upon authentication
 const String kadmin1 = "flaviananselmo6@gmail.com";
 const String kadmin2 = "anambiro@kibu.ac.ke";
-const String kadmin3 = "maiyojulius@kibu.ac.ke" ;
+const String kadmin3 = "maiyojulius@kibu.ac.ke";
 const String kadmin4 = "jndiku@mmust.ac.ke";
 const String kadmin5 = "maryngare@yahoo.com";
+
+const String khomepgtxt =
+    "Toprate is a software that enables online teaching and learning to take place seamlessly. The motivation for this software development is to have a common and independent platform so that teaching and learning can take place among participants from various institutions. The main target participants are newly appointed heads of academic departments at institutions of higher learning in Kenya. Toprate allows instructor to upload content which can be accessed easily by learners by just a mouse click. It also allows for both synchronous and asynchronous interaction.";

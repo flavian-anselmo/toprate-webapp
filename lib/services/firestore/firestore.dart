@@ -27,6 +27,7 @@ class FireStoreServices with ChangeNotifier {
     {
       "module": "module ",
       "link": "download",
+      "email":"email",
     }
   ];
   bool? isModuleFetched;
