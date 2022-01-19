@@ -56,10 +56,10 @@ class _ModulesState extends State<Modules> {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 kmodule1,
-                                style: TextStyle(fontSize: 15),
+                                style:kmodulwidget
                               ),
                             )),
-                            color: Color.fromARGB(255, 161, 172, 196),
+                            color: Colors.deepOrange
                           ),
                         ),
                       ),
@@ -77,10 +77,10 @@ class _ModulesState extends State<Modules> {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 kmodule2,
-                                style: TextStyle(fontSize: 15),
+                                style:kmodulwidget
                               ),
                             )),
-                            color: Color.fromARGB(255, 98, 162, 214),
+                            color: Colors.green
                           ),
                         ),
                       ),
@@ -98,10 +98,10 @@ class _ModulesState extends State<Modules> {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 kmodule3,
-                                style: TextStyle(fontSize: 15),
+                                style:kmodulwidget
                               ),
                             )),
-                            color: Color.fromARGB(255, 98, 162, 214),
+                            color: Colors.blueGrey
                           ),
                         ),
                       ),
@@ -119,10 +119,10 @@ class _ModulesState extends State<Modules> {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 kmodule4,
-                                style: TextStyle(fontSize: 15),
+                                style: kmodulwidget
                               ),
                             )),
-                            color: Color.fromARGB(255, 161, 172, 196),
+                            color: Colors.deepPurple
                           ),
                         ),
                       ),
@@ -140,10 +140,10 @@ class _ModulesState extends State<Modules> {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 kmodule5,
-                                style: TextStyle(fontSize: 15),
+                                style: kmodulwidget
                               ),
                             )),
-                            color: Color.fromARGB(255, 161, 172, 196),
+                            color: Colors.lime
                           ),
                         ),
                       ),

@@ -42,7 +42,7 @@ var kelevatedbutton = ElevatedButton.styleFrom(
 );
 const kmoduletxt= TextStyle(fontSize: 15.0,color: Colors.green);
 
-
+const kmodulwidget= TextStyle(fontSize: 15.0,color: Colors.white);
 
 //constants for the inputs
 final ktextFieldDEcoratiion = InputDecoration(
