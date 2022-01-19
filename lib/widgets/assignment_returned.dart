@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/services/firestore/download.dart';
 import 'package:topratepppp/services/firestore/firestore.dart';
 
@@ -11,15 +12,23 @@ class ModuleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: Provider.of<FireStoreServices>(context).assignmentsUploaded.length,
+      itemCount:
+          Provider.of<FireStoreServices>(context).assignmentsUploaded.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
           padding: const EdgeInsets.all(10.0),
           child: InkWell(
             child: ExpansionTile(
               title: ListTile(
-                leading: Image.network(
-                  "https://media.istockphoto.com/vectors/pdf-download-vector-icon-vector-id1263032734?k=20&m=1263032734&s=612x612&w=0&h=RNUAjin6RWIpjr-NgvnASdxAwUE6pyUafrk6LcoyRNo=",
+                leading: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                   
+                    Provider.of<FireStoreServices>(
+                      context,
+                    ).assignmentsUploaded[index]["module"],
+                     style:kmoduletxt,
+                  ),
                 ),
                 title: Text(
                   Provider.of<FireStoreServices>(

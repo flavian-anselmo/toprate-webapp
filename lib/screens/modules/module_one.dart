@@ -8,7 +8,7 @@ import 'package:topratepppp/widgets/module_returned.dart';
 
 class ModuleOne extends StatefulWidget {
   const ModuleOne({Key? key}) : super(key: key);
-  static const String id = "module one";
+  static const String id = kmodule1;
 
   @override
   _ModuleOneState createState() => _ModuleOneState();
@@ -31,11 +31,12 @@ class _ModuleOneState extends State<ModuleOne> {
   }
 
   Future<void> filterList() async {
+    //detrmines what to display
     try {
       Provider.of<FireStoreServices>(context, listen: false)
           .moduleContents
           .removeWhere((element) =>
-              element["module"] == kmodule2||
+              element["module"] == kmodule2 ||
               element["module"] == kmodule3 ||
               element["module"] == kmodule4 ||
               element["module"] == kmodule5);

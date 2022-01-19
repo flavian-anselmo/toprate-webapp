@@ -8,7 +8,7 @@ import 'package:topratepppp/widgets/module_returned.dart';
 
 class ModuleThree extends StatefulWidget {
   const ModuleThree({Key? key}) : super(key: key);
-  static const String id = "module-three";
+  static const String id =kmodule3;
 
   @override
   _ModuleThreeState createState() => _ModuleThreeState();

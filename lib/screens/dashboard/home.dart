@@ -49,7 +49,30 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  'https://thumbs.dreamstime.com/b/e-learning-concept-illustration-flat-style-38747905.jpg',
+                ),
+                fit: BoxFit.cover, // -> 02
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                khomepgtxt,
+                style: TextStyle(color: Colors.white, fontSize: 15,),
+              ),
+            ),
+          )
+        ],
+      ),
       floatingActionButton: AdminButton(isVisible: isVisible),
     );
   }

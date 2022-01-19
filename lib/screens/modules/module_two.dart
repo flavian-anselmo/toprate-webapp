@@ -8,7 +8,7 @@ import 'package:topratepppp/widgets/module_returned.dart';
 
 class ModuleTwo extends StatefulWidget {
   const ModuleTwo({Key? key}) : super(key: key);
-  static const String id = "module-two";
+  static const String id = kmodule2;
 
   @override
   _ModuleTwoState createState() => _ModuleTwoState();
@@ -29,6 +29,7 @@ class _ModuleTwoState extends State<ModuleTwo> {
   }
 
   Future<void> filterList() async {
+    //used to filter the content display 
     try {
       Provider.of<FireStoreServices>(context, listen: false)
           .moduleContents
