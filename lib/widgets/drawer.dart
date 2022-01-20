@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/screens/authentication/login.dart';
+import 'package:topratepppp/screens/dashboard/profile.dart';
 import 'package:topratepppp/services/auth/sign_out.dart';
 
-class NavigationDrawer extends StatelessWidget {
+class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
 
+  @override
+  State<NavigationDrawer> createState() => _NavigationDrawerState();
+}
+
+class _NavigationDrawerState extends State<NavigationDrawer> {
+  String currentUser = "usernamame";
+  String email = "user@mail.com";
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,15 +25,15 @@ class NavigationDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'username',
+                Text(
+                  currentUser,
                   style: ksidebarUserInfoText,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'usernameo@gmail.com',
+                  email,
                   style: ksidebarUserInfoText.copyWith(
                     color: Colors.white,
                     fontSize: 11,
@@ -46,10 +54,13 @@ class NavigationDrawer extends StatelessWidget {
             title: const Text('Profile'),
             onTap: () {
               //move to the profile screem
+              Navigator.pushNamed(context, Profile.id);
             },
           ),
           //const Spacer(),
-          const Divider(color: Colors.blueGrey,),
+          const Divider(
+            color: Colors.blueGrey,
+          ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: ListTile(
