@@ -65,40 +65,51 @@ class _ProfileState extends State<Profile> {
         appBar: AppBar(
           title: const Text(Profile.id),
         ),
-        body: Center(
-          child: SizedBox(
-            width: 500,
-            child: Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.person,
-                      size: 100,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: ListTile(
-                        leading: const Icon(Icons.person),
-                        trailing: Text(currentUser),
+        body: Container(
+           decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                'https://chiefexecutive.net/wp-content/uploads/2020/11/AdobeStock_246230613.jpg'),
+            fit: BoxFit.cover, // -> 02
+          ),
+        ),
+          child: Center(
+            child: SizedBox(
+              width: 500,
+              child: Card(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.person,
+                        size: 100,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: ListTile(
-                        leading: const Icon(Icons.email),
-                        trailing: Text(email),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        color:Colors.cyan,
+                        child: ListTile(
+                          leading: const Icon(Icons.person),
+                          trailing: Text(currentUser,style:const TextStyle(fontSize: 20)),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        color: Colors.amber,
+                        child: ListTile(
+                          leading: const Icon(Icons.email),
+                          trailing: Text(email,style:const TextStyle(fontSize: 20)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
