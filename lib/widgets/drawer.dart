@@ -4,6 +4,7 @@ import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/screens/authentication/login.dart';
 import 'package:topratepppp/screens/dashboard/profile.dart';
 import 'package:topratepppp/services/auth/sign_out.dart';
+import 'package:topratepppp/services/chat/one_chat.dart';
 
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -15,6 +16,48 @@ class NavigationDrawer extends StatefulWidget {
 class _NavigationDrawerState extends State<NavigationDrawer> {
   String currentUser = "usernamame";
   String email = "user@mail.com";
+  @override
+  void initState() {
+    super.initState();
+    fetchUserMail();
+    checkAdminEmail();
+  }
+  Future<void> fetchUserMail() async {
+    //ge the email of the user
+    Provider.of<ModuleChat>(context, listen: false)
+        .fetchCurrentUser()
+        .whenComplete(() {
+      setState(() {
+        email = Provider.of<ModuleChat>(
+          context,
+          listen: false,
+        ).loggedInUser.email!;
+      });
+    });
+  }
+
+  Future<void> checkAdminEmail() async {
+    Provider.of<ModuleChat>(
+      context,
+      listen: false,
+    ).fetchCurrentUser().whenComplete(() {
+      String? email =
+          Provider.of<ModuleChat>(context, listen: false).loggedInUser.email;
+      if (email == kadmin1 ||
+          email == kadmin2 ||
+          email == kadmin3 ||
+          email == kadmin4 ||
+          email == kadmin5) {
+        setState(() {
+          currentUser = "Admin";
+        });
+      } else {
+        setState(() {
+          currentUser = "Student";
+        });
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Drawer(
