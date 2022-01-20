@@ -5,6 +5,7 @@ import 'package:topratepppp/screens/authentication/register.dart';
 import 'package:topratepppp/screens/authentication/reset.dart';
 import 'package:topratepppp/screens/dashboard.dart';
 import 'package:topratepppp/screens/dashboard/home.dart';
+import 'package:topratepppp/screens/dashboard/profile.dart';
 import 'package:topratepppp/screens/discuss/module_one_chat.dart';
 import 'package:topratepppp/screens/modules/Assignments/admin_view_assignmnts.dart';
 import 'package:topratepppp/screens/modules/Assignments/upload.dart';
@@ -26,6 +27,7 @@ Map<String, WidgetBuilder> getRoutes(RouteSettings settings) {
     ResetForgotenPassword.id: (context) => const ResetForgotenPassword(),
     Home.id: (context) => const Home(),
     DashboardScreen.id: (context) => const DashboardScreen(),
+    Profile.id:(context)=> const Profile(),
 
     //modules in the applications
     ModuleOne.id: (context) => const ModuleOne(),

@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
               alignment: Alignment.topLeft,
               child: Text(
                 khomepgtxt,
-                style: TextStyle(color: Colors.white, fontSize: 15,),
+                style: TextStyle(color: Colors.white, fontSize: 20,),
               ),
             ),
           )
