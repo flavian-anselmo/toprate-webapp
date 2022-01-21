@@ -18,7 +18,6 @@ class SignInAuth with ChangeNotifier {
         password: password,
       );
 
-      EasyLoading.showSuccess("SignedIn Succesfully");
 
       isLog = true;
       notifyListeners();

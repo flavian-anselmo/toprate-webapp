@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:topratepppp/constant.dart';
 import 'package:topratepppp/screens/authentication/register.dart';
@@ -135,14 +136,17 @@ class _LoginPageState extends State<LoginPage> {
                             Provider.of<SignInAuth>(
                               context,
                               listen: false,
-                            ).signToIgas(email, password).whenComplete(() {
+                            ).signToIgas(email, password).whenComplete(()async  {
                               //move to nxt screen if auth is ok else remain in thet screen
                               if (Provider.of<SignInAuth>(context,
                                           listen: false)
                                       .isLog ==
                                   true) {
                                 //move to the dhaborad screen
-                                Navigator.pushAndRemoveUntil(
+                                
+                                EasyLoading.showSuccess("SignedIn Succesfully");
+
+                                await Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
                                     builder: (BuildContext context) =>
